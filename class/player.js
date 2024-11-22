@@ -99,10 +99,24 @@ class Player {
 						value: 0,
 						startAngle: -Math.PI / 2,
 						animation: { duration: 100, easing: "circleProgressEasing" },
-						size: $(".song-info__album-art-image").width(),
+						size: $(".song-info__album-art-image").width() + 1,
 						fill: {
-							color: 'rgba(255,255,255, .4)'
-						}
+							gradient: [
+								['rgba(255, 0, 0, 1)', 0],
+								['rgba(255, 154, 0, 1)', 0.1],
+								['rgba(208, 222, 33, 1)', 0.2],
+								['rgba(79, 220, 74, 1)', 0.3],
+								['rgba(63, 218, 216, 1)', 0.4],
+								['rgba(47, 201, 226, 1)', 0.5],
+								['rgba(28, 127, 238, 1)', 0.6],
+								['rgba(95, 21, 242, 1)', 0.7],
+								['rgba(186, 12, 248, 1)', 0.8],
+								['rgba(251, 7, 217, 1)', 0.9],
+								['rgba(255, 0, 0, 1)', 1],
+							],
+							gradientAngle: 90,
+						},
+						thickness: $(".song-info__album-art-image").width()/20
 					});
 
 				}
