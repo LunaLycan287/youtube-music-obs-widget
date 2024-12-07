@@ -5,7 +5,12 @@ let YTMDesktopUrl = "http://127.0.0.1:9863";
 let readyCheck = setInterval(function () {
 	if (count > 3) {
 		clearInterval(readyCheck);
-		player = new Player();
+		let rainbowCircle = false;
+		let urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.get('features') !== null && urlParams.get('features') !== "") {
+			rainbowCircle = urlParams.get('features').split(" ").includes("rainbow-progressbar");
+		}
+		player = new Player(rainbowCircle);
 		connector = new Connector(player);
 	}
 }, 500);

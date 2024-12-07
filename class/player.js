@@ -1,10 +1,12 @@
 class Player {
 	trackTimeInterval;
 	lastTrackTime = null;
+	rainbowCircle;
 
-	constructor() {
+	constructor(rainbowCircle) {
 		this.lastUpdateData = {};
 		this.isPlaying = false;
+		this.rainbowCircle = rainbowCircle;
 	}
 
 	updateSongInfo(playerInfo) {
@@ -95,12 +97,9 @@ class Player {
 				el.find(".song-info__album-art").append($('<div class="song-info__album-art-image" style="background-image:url(\'' + this.getAlbumArt(playerInfo.track.thumbnails[0].url, 420, 420) + '\')"></div>'));
 				$(".artist-background").css("background-image", "url('" + this.getAlbumArt(playerInfo.track.thumbnails[0].url, 420, 420) + "')");
 				if ($("body").hasClass("circle-progressbar")) {
-					$('.song-info__album-art-image').circleProgress({
-						value: 0,
-						startAngle: -Math.PI / 2,
-						animation: { duration: 100, easing: "circleProgressEasing" },
-						size: $(".song-info__album-art-image").width() + 1,
-						fill: {
+					let fillValue = { color: 'rgba(255,255,255, .4)' };
+					if(this.rainbowCircle) {
+						fillValue = {
 							gradient: [
 								['rgba(255, 0, 0, 1)', 0],
 								['rgba(255, 154, 0, 1)', 0.1],
@@ -115,10 +114,17 @@ class Player {
 								['rgba(255, 0, 0, 1)', 1],
 							],
 							gradientAngle: 90,
-						},
+						};
+					}
+
+					$('.song-info__album-art-image').circleProgress({
+						value: 0,
+						startAngle: -Math.PI / 2,
+						animation: { duration: 100, easing: "circleProgressEasing" },
+						size: $(".song-info__album-art-image").width() + 1,
+						fill: fillValue,
 						thickness: $(".song-info__album-art-image").width()/20
 					});
-
 				}
 			}
 			this.updateTrackTime(playerInfo);

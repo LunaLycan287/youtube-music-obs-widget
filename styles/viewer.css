@@ -88,12 +88,12 @@
 }
 
 @keyframes spin {
-    from {
-        transform:rotate(0deg);
-    }
-    to {
-        transform:rotate(360deg);
-    }
+	from {
+		transform:rotate(0deg);
+	}
+	to {
+		transform:rotate(360deg);
+	}
 }
 
 @keyframes blink {
@@ -171,7 +171,7 @@ body.album-spin .song-info__album-art-image {
 	animation-name: spin;
 	animation-duration: 60000ms;
 	animation-iteration-count: infinite;
-    animation-timing-function: linear; 
+	animation-timing-function: linear; 
 	animation-play-state: running;
 }
 
@@ -179,7 +179,7 @@ body.album-spin .song-info__album-art-image > *{
 	animation-name: spin;
 	animation-duration: 60000ms;
 	animation-iteration-count: infinite;
-    animation-timing-function: linear; 
+	animation-timing-function: linear; 
 	animation-play-state: running;
 	animation-direction: reverse;
 }
@@ -201,7 +201,7 @@ body.blink-pause.paused .song-info__album-art::after {
 	animation-name: blink;
 	animation-duration: 2s;
 	animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out; 
+	animation-timing-function: ease-in-out; 
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -438,3 +438,55 @@ progress.progressbar {
 	-moz-linear-gradient(left, #09c, #f44);
 }
 
+body.rainbow-progressbar .progressbar::-webkit-progress-bar {
+	background-image: -webkit-linear-gradient(135deg,
+		transparent,
+		transparent 33%,
+		rgba(0, 0, 0, .1) 33%,
+		rgba(0, 0, 0, .1) 66%,
+		transparent 66%),
+	-webkit-linear-gradient(top,
+		rgba(255, 255, 255, .25),
+		rgba(0, 0, 0, .2)),
+	-webkit-linear-gradient(
+		left,
+		rgba(255, 0, 0, 1) 0%,
+		rgba(255, 154, 0, 1) 10%,
+		rgba(208, 222, 33, 1) 20%,
+		rgba(79, 220, 74, 1) 30%,
+		rgba(63, 218, 216, 1) 40%,
+		rgba(47, 201, 226, 1) 50%,
+		rgba(28, 127, 238, 1) 60%,
+		rgba(95, 21, 242, 1) 70%,
+		rgba(186, 12, 248, 1) 80%,
+		rgba(251, 7, 217, 1) 90%,
+		rgba(255, 0, 0, 1) 100%
+	);
+}
+
+body.rainbow-progressbar progress[value]::-moz-progress-bar,
+body.rainbow-progressbar .progressbar::-moz-progress-bar {
+	background-image: -moz-linear-gradient(135deg,
+		transparent,
+		transparent 33%,
+		rgba(0, 0, 0, .1) 33%,
+		rgba(0, 0, 0, .1) 66%,
+		transparent 66%),
+	-moz-linear-gradient(top,
+			rgba(255, 255, 255, .25),
+			rgba(0, 0, 0, .2)),
+	-moz-linear-gradient(
+		left,
+		rgba(255, 0, 0, 1) 0%,
+		rgba(255, 154, 0, 1) 10%,
+		rgba(208, 222, 33, 1) 20%,
+		rgba(79, 220, 74, 1) 30%,
+		rgba(63, 218, 216, 1) 40%,
+		rgba(47, 201, 226, 1) 50%,
+		rgba(28, 127, 238, 1) 60%,
+		rgba(95, 21, 242, 1) 70%,
+		rgba(186, 12, 248, 1) 80%,
+		rgba(251, 7, 217, 1) 90%,
+		rgba(255, 0, 0, 1) 100%
+	);
+}
